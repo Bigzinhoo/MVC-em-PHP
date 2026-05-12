@@ -34,6 +34,21 @@ class Testimonial
         //retornar sucesso
         return true;
     }
+    /**Metodo responsavel por atualizar os dados do Banco com a instancia atual */
+    public function atualizar(){
+    //Atualiza o depoimento no banco de dados
+    return (new Database('depoimentos'))->update('id = '.$this->id ,[
+        'nome' => $this->nome,
+        'mensagem' => $this->mensagem,
+    ]);
+    }
+
+    /**Metodo responsavel por retornar um depoimento com base no seu Id */
+    public static function getTestimonialsById($id){
+    $results = self::getTestimonials('id = '.(int)$id);
+
+    return $results[0] ?? null;
+    }
 
     //metodo responsavel por obter os depoimentos do banco de dados
     public static function getTestimonials($where = '', $order = '', $limit = '', $fields = '*')
@@ -49,5 +64,11 @@ class Testimonial
             ->fetchObject();
 
         return (int) $result->qtd;
+    }
+
+    /**Metodo responsavel por excluir os dados do Banco de dados*/
+    public function excluir(){
+    //Deleta o depoimento no banco de dados
+    return (new Database('depoimentos'))->delete('id = '.$this->id );
     }
 }

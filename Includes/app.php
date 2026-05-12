@@ -24,7 +24,9 @@ Database::config(
 
 //define o mapeamento de middlewares
 Queue::setMap([
-    'maintenance' => App\Http\Middlewares\Maintenance::class
+    'maintenance' => App\HTTP\Middlewares\Maintenance::class,
+    'required-admin-logout'=>App\HTTP\Middlewares\RequireAdminLogout::class,
+     'required-admin-login'=>App\HTTP\Middlewares\RequireAdminLogin::class
 ]);
 
 //define a fila de middlewares padrao

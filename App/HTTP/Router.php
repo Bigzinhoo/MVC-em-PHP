@@ -5,7 +5,7 @@ namespace App\HTTP;
 use Closure;
 use Exception;
 use ReflectionFunction;
-use App\Http\Middlewares\Queue;
+use App\HTTP\Middlewares\Queue;
 
 class Router {
 
@@ -173,5 +173,14 @@ public function run()
 public function getCurrentUrl()
 {
     return $this->url.$this->getUri();
+}
+
+/**Metodo responsavel por retornar a URL */
+public function  redirect($route){
+//URL
+$url = $this->url.$route;
+//Executa o redirect
+header('location:'.$url);
+exit;
 }
 }

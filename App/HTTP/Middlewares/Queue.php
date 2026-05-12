@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middlewares;
+namespace App\HTTP\Middlewares;
 
 Class Queue{
 
